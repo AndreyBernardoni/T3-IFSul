@@ -36,17 +36,14 @@
 
                     <div class="card-body">
                         <div class="row mt-5">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <a class="btn btn-lg btn-primary btn-block" href="view/register_page.php">Cadastrar</a>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <a class="btn btn-lg btn-success btn-block" href="">Atualizar</a>
                             </div>
-                            <div class="col-3">
-                                <a class="btn btn-lg btn-danger btn-block" href="">Deletar</a>
-                            </div>
-                            <div class="col-3">
-                                <a class="btn btn-lg btn-info btn-block" href="">Consultar</a>
+                            <div class="col-4">
+                                <a class="btn btn-lg btn-info btn-block" href="view/search_page.php">Consultar</a>
                             </div>
                         </div>
                     </div>

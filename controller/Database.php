@@ -37,4 +37,26 @@ class Database
 
         return true;
     }
+
+    function search($local)
+    {
+        $this->connect();
+
+        $sql = "SELECT * FROM `tb_compromisso` WHERE `txt_local` = '$local'";
+
+        $result = mysqli_query($this->conn, $sql);
+
+        if (!$result) {
+            die(mysqli_error($this->conn));
+            return false;
+        }
+
+        $compromissos = array();
+
+        while ($dados = mysqli_fetch_array($result)) {
+            $compromissos[] = $dados;
+        }
+
+        return $compromissos;
+    }
 }
