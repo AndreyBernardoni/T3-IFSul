@@ -59,4 +59,20 @@ class Database
 
         return $compromissos;
     }
+
+    function update($id, $data, $local, $hora, ?String $descricao)
+    {
+        $this->connect();
+
+        $sql = "UPDATE `tb_compromisso` SET `dt_data`='$data',`txt_local`='$local',`hr_hora`='$hora',`txt_descricao`='$descricao' WHERE `id`='$id'";
+
+        $result = mysqli_query($this->conn, $sql);
+
+        if (!$result) {
+            die(mysqli_error($this->conn));
+            return false;
+        }
+
+        return true;
+    }
 }

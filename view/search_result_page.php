@@ -1,4 +1,7 @@
-<?php require_once '../controller/search.php' ?>
+<?php
+require_once '../controller/search.php';
+session_start();
+?>
 
 <html>
 
@@ -46,6 +49,7 @@
                                         echo '<th scope="col">Local</th>';
                                         echo '<th scope="col">Hora</th>';
                                         echo '<th scope="col">Descrição</th>';
+                                        echo '<th scope="col">Editar</th>';
                                         echo '</tr>';
                                         echo '</thead>';
                                         echo '<tbody>';
@@ -55,6 +59,16 @@
                                             echo '<td>' . $value['txt_local'] . '</td>';
                                             echo '<td>' . $value['hr_hora'] . '</td>';
                                             echo '<td>' . $value['txt_descricao'] . '</td>';
+                                            echo '<td>';
+                                            echo '<form action="update_page.php" method="post">';
+                                            echo '<input type="hidden" name="id" value="' . $value['id'] . '">';
+                                            echo '<input type="hidden" name="data" value="' . $value['dt_data'] . '">';
+                                            echo '<input type="hidden" name="local" value="' . $value['txt_local'] . '">';
+                                            echo '<input type="hidden" name="hora" value="' . $value['hr_hora'] . '">';
+                                            echo '<input type="hidden" name="descricao" value="' . $value['txt_descricao'] . '">';
+                                            echo '<button type="submit" class="btn btn-primary">Editar</button>';
+                                            echo '</form>';
+                                            echo '</td>';
                                             echo '</tr>';
                                         }
                                         echo '</tbody>';
@@ -63,8 +77,8 @@
                                     } else {
                                         echo '<h5 class="card-title">Nenhum resultado encontrado</h5>';
                                     }
-
                                     ?>
+
 
                                 </div>
                             </div>
@@ -75,7 +89,7 @@
                     <div class="card-footer">
                         <a href="search_page.php" class="btn btn-info btn-block">Voltar</a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
