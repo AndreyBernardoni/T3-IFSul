@@ -12,6 +12,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
@@ -24,11 +25,20 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Adicionar Compromisso</h4>
+
+                        <?php
+                        if (isset($_GET['success']) && $_GET['success'] == 'true') {
+                            echo '<div class="alert alert-success" role="alert">Compromisso adicionado com sucesso!</div>';
+                        } else if (isset($_GET['success']) && $_GET['success'] == 'false'){
+                            echo '<div class="alert alert-danger" role="alert">Erro ao adicionar o compromisso!</div>';
+                        }
+                        ?>
+
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action="">
+                                <form method="post" action="../controller/register.php">
                                     <div class="form-group">
                                         <label>Data</label>
                                         <input type="date" name="date" class="form-control" placeholder="Data" required />
@@ -43,7 +53,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Descrição do Compromisso</label>
-                                        <input type="text" name="desc" class="form-control" placeholder="Descrição"/>
+                                        <input type="text" name="desc" class="form-control" placeholder="Descrição" />
                                     </div>
                                     <div class="row mt-5">
                                         <div class="col-6">
@@ -61,4 +71,5 @@
             </div>
         </div>
 </body>
+
 </html>

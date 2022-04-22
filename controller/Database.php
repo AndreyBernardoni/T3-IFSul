@@ -2,8 +2,6 @@
 
 class Database
 {
-    
-
     function Database($user, $pass, $db, $host)
     {
         $this->user = $user;
@@ -17,8 +15,7 @@ class Database
         $this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->db);
         if (!$this->conn) {
             die(mysqli_connect_errno());
-            echo "Ocorreu um erro na conexão com o banco de dados.";
-            exit;
+            echo "<h1>Ocorreu um erro na conexão com o banco de dados.</h1>";
         }
     }
 
@@ -28,15 +25,16 @@ class Database
 
         if ($descricao == null) {
             $sql = "INSERT INTO `tb_compromisso`(`dt_data`, `txt_local`, `hr_hora`) VALUES ('$data', '$local', '$hora')";
-        }else {
+        } else {
             $sql = "INSERT INTO `tb_compromisso`(`dt_data`, `txt_local`, `hr_hora`, `txt_descricao`) VALUES ('$data', '$local', '$hora', '$descricao')";
         }
 
         $result = mysqli_query($this->conn, $sql);
         if (!$result) {
             die(mysqli_error($this->conn));
-            echo "Ocorreu um erro ao inserir os dados.";
-            exit;
+            return false;
         }
+
+        return true;
     }
 }
